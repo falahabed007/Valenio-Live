@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#13100e"/>
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#c9a227" stroke-width="1.5" opacity=".6"/>
+  <!-- stilisierte Flamme / Holzofen -->
+  <path d="M32 14c4 7-2 10 1 15 2-2 3-5 3-5 4 5 5 9 5 13a12 12 0 1 1-24 0c0-6 4-10 7-14 2 3 1 6 3 7 1-6-1-10 2-16z"
+        fill="#e3cd86"/>
+</svg>

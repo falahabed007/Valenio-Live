@@ -1,0 +1,16 @@
+# Secrets — niemals committen
+.env
+.env.*
+!env-example.txt
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Lokale Uploads / Temp
+uploads/
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db

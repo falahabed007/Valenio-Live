@@ -1,0 +1,28 @@
+FOTOS / BILDER FÜR DIE WEBSITE — Pizzeria Valenio
+===================================================
+
+Die Vorlage funktioniert ohne Fotos (edle Verlauf-Platzhalter). Für den
+echten "10.000-€-Look" sind PROFESSIONELLE FOTOS aber der größte Hebel.
+
+Lege hier folgende Dateien ab und die Seite nutzt sie automatisch:
+
+  hero.jpg        – großes Stimmungsbild (Holzofen / Pizza / Ambiente),
+                    quer, mind. 1920×1080. Wird auch für die
+                    WhatsApp/Facebook-Vorschau (og:image) verwendet.
+  favicon.svg     – bereits vorhanden (kleines Logo im Browser-Tab).
+
+Optional (für Story- und Galerie-Sektion):
+  story.jpg       – Hochformat (Inhaber / Restaurant), ca. 4:5
+  galerie-1.jpg … galerie-6.jpg – quadratisch/quer, je ~1200 px
+
+HINWEIS ZUM EINBINDEN
+---------------------
+Aktuell zeigen Hero, Story und Galerie elegante CSS-Platzhalter. Um echte
+Fotos einzusetzen, in index.html:
+  • Hero:    in ".hero-bg" zusätzlich  background-image:url('/assets/hero.jpg')
+             (mit dunklem Overlay-Gradient davor, ist schon angelegt).
+  • Story:   das <div class="ph"> durch <img src="/assets/story.jpg"> ersetzen.
+  • Galerie: in den <div class="gal"> je ein <img src="/assets/galerie-X.jpg">.
+
+Tipp: Bilder vorher zu WebP konvertieren (kleiner, schneller) und auf max.
+~1600 px Breite skalieren. Das hält die Seite schnell (Lighthouse 90+).

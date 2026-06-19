@@ -1,0 +1,26 @@
+# ============================================================
+#  Pizzeria Valenio — Umgebungsvariablen
+#  Diese Datei nach ".env" kopieren und ausfuellen.
+#  ECHTE .env NIEMALS committen (siehe .gitignore)!
+# ============================================================
+
+# --- Datenbank (Speicherung der hochgeladenen Speisekarten-PDFs) ---
+# MongoDB Atlas (kostenlos) oder lokale MongoDB.
+# Ohne diese Variable laeuft die Seite trotzdem, nur der PDF-Upload
+# ist dann deaktiviert (reiner Vorschaumodus).
+MONGODB_URI=mongodb+srv://USER:PASSWORD@cluster.mongodb.net/pizzeria-valenio
+
+# --- Inhaber-Zugang (/admin) ---
+# Passwort, mit dem sich der Inhaber zum Hochladen der Karte einloggt.
+ADMIN_PASSWORD=bitte-aendern-123
+# Zufallsgeheimnis zum Signieren des Login-Tokens (>= 40 Zeichen).
+ADMIN_TOKEN_SECRET=bitte-hier-einen-langen-zufallsstring-einsetzen-xxxxxxxx
+
+# --- Server ---
+PORT=3000
+
+# --- Restaurant-Stammdaten (optional, nur fuer Meta/Anzeige genutzt) ---
+RESTAURANT_NAME=Pizzeria Valenio
+RESTAURANT_ADRESSE=Markt 5, 48317 Drensteinfurt
+RESTAURANT_TELEFON=02508 9994944
+RESTAURANT_EMAIL=info@pizzeria-valenio.de
