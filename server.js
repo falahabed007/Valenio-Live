@@ -125,6 +125,17 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// Health-Check — von Render angepingt und zur schnellen Sichtpruefung im Browser.
+app.get('/api/health', (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  res.json({
+    status: 'ok',
+    db: dbReady ? 'connected' : 'offline',
+    upload: dbReady,
+    zeit: new Date().toISOString()
+  });
+});
+
 // ------------------------------------------------------------------
 //  Oeffentliche Speisekarten-API
 // ------------------------------------------------------------------

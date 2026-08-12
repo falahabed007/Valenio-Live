@@ -10,9 +10,9 @@
 <meta property="og:type" content="restaurant" />
 <meta property="og:title" content="Pizzeria Valenio" />
 <meta property="og:description" content="Italienische Küche & Holzofen-Pizza in Drensteinfurt. Tisch online reservieren." />
-<meta property="og:image" content="/assets/hero.jpg" />
+<meta property="og:image" content="assets/hero.jpg" />
 
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -64,6 +64,21 @@ const CONFIG = {
     steuernummer: ""                                      // Steuernummer
   }
 };
+
+/* ------------------------------------------------------------------
+   VORSCHAU-MODUS (GitHub Pages)
+   Auf github.io laeuft nur die statische Seite — kein Server, also auch
+   kein Speisekarten-Upload. Dort blenden wir den Inhaber-Login aus und
+   halten Suchmaschinen fern (Impressum ist noch nicht vollstaendig).
+   Unter der echten Domain (Render) greift nichts davon.
+------------------------------------------------------------------ */
+const IST_VORSCHAU = location.hostname.endsWith('github.io');
+if (IST_VORSCHAU) {
+  const rb = document.createElement('meta');
+  rb.name = 'robots';
+  rb.content = 'noindex,nofollow';
+  document.head.appendChild(rb);
+}
 </script>
 
 <style>
@@ -460,7 +475,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
     </div>
     <div class="foot-bottom">
       <span>© <span id="year"></span> <span id="footName">Pizzeria Valenio</span>. Alle Rechte vorbehalten.</span>
-      <span>Erstellt von <a href="https://fluevate.de" target="_blank" rel="noopener" style="color:var(--gold-soft);font-weight:500">FlueVate</a> · <a href="/admin">Inhaber-Login</a></span>
+      <span>Erstellt von <a href="https://fluevate.de" target="_blank" rel="noopener" style="color:var(--gold-soft);font-weight:500">FlueVate</a><span id="adminLink"> · <a href="/admin">Inhaber-Login</a></span></span>
     </div>
   </div>
 </footer>
@@ -552,6 +567,9 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
   else if(CONFIG.whatsapp) mc+='<a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/'+CONFIG.whatsapp+'">WhatsApp</a>';
   mc+='<a class="btn btn-outline" href="#speisekarte">Karte</a>';
   $('#mobileCall').innerHTML=mc;
+
+  // Im Vorschau-Modus gibt es keinen Server -> Inhaber-Login wuerde ins Leere fuehren
+  if(IST_VORSCHAU){ const al=$('#adminLink'); if(al) al.style.display='none'; }
 
   // Impressum / Datenschutz Inhalte
   const im=CONFIG.impressum;
