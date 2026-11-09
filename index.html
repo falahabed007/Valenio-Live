@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pizzeria Valenio — Pizza & italienische Küche · Drensteinfurt</title>
-<meta name="description" content="Pizzeria Valenio in Drensteinfurt — italienische Küche & Pizza. Tisch online reservieren über OpenTable. Jetzt Speisekarte ansehen." />
+<title>Pizzeria Valenio — Italienisches Restaurant · Drensteinfurt</title>
+<meta name="description" content="Pizzeria Valenio in Drensteinfurt — italienisches Restaurant mit Pizza und Pasta. Tisch online reservieren über OpenTable. Jetzt Speisekarte ansehen." />
 
 <!-- Open Graph (schöne WhatsApp/Facebook-Vorschau) -->
 <meta property="og:type" content="restaurant" />
 <meta property="og:title" content="Pizzeria Valenio" />
-<meta property="og:description" content="Italienische Küche & Pizza in Drensteinfurt. Tisch online reservieren." />
+<meta property="og:description" content="Italienisches Restaurant in Drensteinfurt. Tisch online reservieren." />
 <meta property="og:image" content="assets/hero.jpg" />
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -24,9 +24,9 @@
 <script>
 const CONFIG = {
   name:    "Pizzeria Valenio",
-  claim:   "italienische küche & pizza",   // PLATZHALTER — Claim/Untertitel frei anpassbar
+  claim:   "italienisches restaurant",   // PLATZHALTER — Claim/Untertitel frei anpassbar
   heroEyebrow: "im herzen von drensteinfurt",  // kleine Zeile über dem Titel (true: Markt 5 = Marktplatz)
-  tagline: "Italienische Küche mit Herz – frische Zutaten, handgemachte Pizza und ein Platz, an dem man gern verweilt.",  // PLATZHALTER — frei anpassbar
+  tagline: "Italienisches Restaurant mit Herz – frische Zutaten, gute Küche und ein Platz, an dem man gern verweilt.",  // PLATZHALTER — frei anpassbar
   gegruendet: "20XX",   // PLATZHALTER — Gründungsjahr nachreichen (wird nur als Fallback genutzt, s. heroEyebrow)
 
   telefon:      "02508 9994944",     // Anzeige
@@ -49,8 +49,8 @@ const CONFIG = {
   // Ein *Sternchen-Paar* hebt ein Wort/eine Zahl GOLD hervor.
   gutZuWissen: {
     oeffnungszeiten: "Wir haben für Sie von *Dienstag bis Sonntag* geöffnet — *Di–Sa* von *17:00–22:00 Uhr*, *Sonntags* von *11:30–14:30* und *17:00–22:00 Uhr*. *Montags* ist Ruhetag.",
-    lieferservice:   "Reservieren Sie bequem online über *OpenTable* oder telefonisch unter *02508 9994944*. An *Wochenenden* empfehlen wir eine Reservierung. *Angaben zu Abholung & Lieferung folgen.*",   // teils PLATZHALTER
-    speisen:         "Aus unserer Küche kommen u.a. *Pizza*, *Pasta*, *Salate*, *Antipasti* und *Dessert*. *Diese Auswahl bitte noch bestätigen.*"   // PLATZHALTER — bestätigen
+    lieferservice:   "Reservieren Sie bequem online über *OpenTable* oder telefonisch unter *02508 9994944*. An *Wochenenden* empfehlen wir eine Reservierung. *Zum Mitnehmen* gibt es unsere Speisen zur *Abholung*, einen Lieferservice bieten wir nicht an.",   // teils PLATZHALTER
+    speisen:         "Aus unserer Küche kommen u.a. *Pizza*, *Pasta*, *Salate*, *Antipasti* und *Dessert*."
   },
 
   // Impressum / Datenschutz  — PFLICHT in DE. Nichts erfunden: bitte vor Go-Live ergänzen.
@@ -201,6 +201,11 @@ header.scrolled{background:rgba(15,12,10,.86);backdrop-filter:blur(12px);
   width:32px;height:1px;background:var(--gold)}
 .gzw-card p{color:var(--muted);margin:0;font-size:1rem;line-height:1.9;text-align:left}
 .gzw-hl{color:var(--gold-soft)}
+.gzw-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:26px}
+.gzw-foto{margin:0;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--line);border-radius:4px;
+  background:linear-gradient(140deg,#241d18,#14110e)}
+.gzw-foto img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gzw-foto:hover img{transform:scale(1.06)}
 
 /* ---------- Speisekarte ---------- */
 .menu-sec{background:var(--bg2)}
@@ -301,6 +306,8 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 @media (max-width:920px){
   .story-grid{grid-template-columns:1fr}.story-figure{order:-1;width:100%;max-width:520px;margin:0 auto}
   .gzw-grid{grid-template-columns:1fr}
+  .gzw-fotos{grid-template-columns:repeat(2,1fr);gap:14px}
+  .gzw-foto:first-child{grid-column:span 2;aspect-ratio:16/10}
   .info-grid{grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
   .gal.big{grid-column:span 2;grid-row:span 1}
@@ -329,7 +336,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 <!-- ======================= HEADER ======================= -->
 <header id="header">
   <div class="container nav">
-    <a href="#top" class="brand" id="brand">Valenio<small id="brandClaim">italienische küche &amp; pizza</small></a>
+    <a href="#top" class="brand" id="brand">Valenio<small id="brandClaim">italienisches restaurant</small></a>
     <nav>
       <ul class="menu" id="menu">
         <li><a href="#geschichte">Geschichte</a></li>
@@ -370,8 +377,8 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
     </div>
     <div class="reveal d1">
       <span class="eyebrow">Unsere Geschichte</span>
-      <h2>Frischer Teig,<br>echte Zutaten,<br>eine Leidenschaft.</h2>
-      <p>Bei uns entsteht jede Pizza von Hand – mit langem Teig und besten Tomaten aus Kampanien. Ein Ort, an dem Gäste zu Freunden werden.</p>
+      <h2>Gute Küche,<br>echte Zutaten,<br>eine Leidenschaft.</h2>
+      <p>Bei uns kommen Pizza, Pasta und Salate frisch aus der Küche an Ihren Tisch. Ein Ort, an dem Gäste zu Freunden werden.</p>
       <p>Wir kochen so, wie man es in Italien tut: ehrlich, großzügig und mit Liebe zum Detail. Dafür stehen wir mit unserem Namen.</p>
       <div class="sig">— Pizzeria Valenio</div>
     </div>
@@ -387,6 +394,11 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
       <div class="rule"></div>
     </div>
     <div class="gzw-grid" id="gzwGrid"></div>
+    <div class="gzw-fotos">
+      <figure class="gzw-foto reveal"><img src="assets/galerie-7.webp" alt="Gastraum mit Lüstern und großen Fenstern" loading="lazy"></figure>
+      <figure class="gzw-foto reveal d1"><img src="assets/galerie-3.webp" alt="Gedeckter Tisch mit Blumen am Fenster" loading="lazy" style="object-position:50% 78%"></figure>
+      <figure class="gzw-foto reveal d2"><img src="assets/galerie-4.webp" alt="Gäste am Tisch mit Pizza, Pasta und Salat" loading="lazy"></figure>
+    </div>
   </div>
 </section>
 
@@ -407,7 +419,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
         <div class="menu-actions" id="actions-restaurant"></div>
       </div>
       <div class="menu-card reveal d1" id="card-togo">
-        <span class="badge">Abholung &amp; Lieferung</span>
+        <span class="badge">Abholung</span>
         <div class="ico">✦</div>
         <h3>TO GO</h3>
         <p class="state" id="state-togo">Karte wird geladen…</p>
@@ -429,11 +441,8 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
     <div class="gallery reveal" id="gallery">
       <div class="gal big"><img src="assets/galerie-1.webp" alt="Salat mit Garnelen auf einem gedeckten Tisch" loading="lazy"></div>
       <div class="gal tall"><img src="assets/galerie-2.webp" alt="Pizza mit Rucola und Spaghetti mit Tomaten von oben" loading="lazy"></div>
-      <div class="gal tall"><img src="assets/galerie-3.webp" alt="Gedeckter Tisch mit Blumen am Fenster" loading="lazy"></div>
-      <div class="gal"><img src="assets/galerie-4.webp" alt="Gäste am Tisch mit Pizza, Pasta und Salat" loading="lazy"></div>
       <div class="gal"><img src="assets/galerie-5.webp" alt="Kamin an der Natursteinwand im Gastraum" loading="lazy"></div>
       <div class="gal"><img src="assets/galerie-6.webp" alt="Gastraum mit beleuchteter Bar und Blumenbild" loading="lazy"></div>
-      <div class="gal"><img src="assets/galerie-7.webp" alt="Gastraum mit Lüstern und großen Fenstern" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -469,7 +478,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 <footer>
   <div class="container">
     <div class="foot-grid">
-      <div class="foot-brand">Valenio<small>italienische küche &amp; pizza</small></div>
+      <div class="foot-brand">Valenio<small>italienisches restaurant</small></div>
       <div class="foot-links">
         <a href="#speisekarte">Speisekarte</a>
         <a href="#gutzuwissen">Gut zu wissen</a>
@@ -525,7 +534,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
   $('#brandClaim').textContent = CONFIG.claim;
   document.querySelector('.foot-brand').firstChild.textContent = firstWord;
   document.querySelector('.foot-brand small').textContent = CONFIG.claim;
-  document.title = CONFIG.name + ' — Pizza & italienische Küche';
+  document.title = CONFIG.name + ' — Italienisches Restaurant';
   $('#footName').textContent = CONFIG.name;
   $('#year').textContent = new Date().getFullYear();
 

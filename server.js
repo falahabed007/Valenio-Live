@@ -333,7 +333,7 @@ function adminPage() {
 <script>
 const SLOTS = [
   { key:'restaurant', titel:'Speisekarte Restaurant', hint:'Karte fuer den Verzehr vor Ort' },
-  { key:'togo',       titel:'Speisekarte TO GO',      hint:'Karte fuer Abholung / Lieferung' }
+  { key:'togo',       titel:'Speisekarte TO GO',      hint:'Karte fuer Abholung' }
 ];
 const tokenKey = 'pizzeria_admin_token';
 
