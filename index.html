@@ -140,6 +140,7 @@ header.scrolled{background:rgba(15,12,10,.86);backdrop-filter:blur(12px);
 .nav-cta{display:flex;align-items:center;gap:14px}
 .hamburger{display:none;background:none;border:none;color:var(--text);cursor:pointer;flex-direction:column;gap:5px;padding:6px}
 .hamburger span{width:24px;height:1.5px;background:var(--text);display:block;transition:.3s}
+.menu-dim{display:none}
 
 /* ---------- Hero ---------- */
 .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
@@ -311,7 +312,14 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
     transition:.4s ease;border-left:1px solid var(--line)}
   .menu.open{transform:none}
   .menu a{font-size:1rem}
-  .hamburger{display:flex}
+  /* backdrop-filter würde das fixierte Menü auf die Höhe der Kopfzeile begrenzen */
+  header.scrolled{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(15,12,10,.96)}
+  .menu-dim{display:block;position:fixed;inset:0;background:rgba(8,6,5,.6);opacity:0;pointer-events:none;transition:.3s}
+  .menu-dim.open{opacity:1;pointer-events:auto}
+  .hamburger{display:flex;position:relative;z-index:2}
+  .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
   .nav-cta .btn:not(.brand-call){display:none}
   .menu-links{flex-direction:column;align-items:stretch}
   .menu-links .btn{min-width:0;padding:18px 20px;font-size:.98rem}
@@ -325,6 +333,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 
 <!-- ======================= HEADER ======================= -->
 <header id="header">
+  <div class="menu-dim" id="menuDim"></div>
   <div class="container nav">
     <a href="#top" class="brand" id="brand">Valenio<small id="brandClaim">italienisches restaurant</small></a>
     <nav>
@@ -337,7 +346,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
     </nav>
     <div class="nav-cta">
       <a class="btn btn-gold" href="#speisekarte">Speisekarte</a>
-      <button class="hamburger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+      <button class="hamburger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -600,8 +609,18 @@ window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
 // Mobile-Nav
 const burger=document.getElementById('burger'), menu=document.getElementById('menu');
-burger.addEventListener('click',()=>menu.classList.toggle('open'));
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+const menuDim=document.getElementById('menuDim');
+function setzeMenu(offen){
+  [menu,menuDim,burger].forEach(e=>e.classList.toggle('open',offen));
+  burger.setAttribute('aria-expanded',String(offen));
+  burger.setAttribute('aria-label',offen?'Menü schließen':'Menü öffnen');
+  document.body.style.overflow=offen?'hidden':'';
+}
+burger.addEventListener('click',()=>setzeMenu(!menu.classList.contains('open')));
+menuDim.addEventListener('click',()=>setzeMenu(false));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setzeMenu(false)));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&menu.classList.contains('open')) setzeMenu(false); });
+matchMedia('(max-width:680px)').addEventListener('change',()=>{ if(menu.classList.contains('open')) setzeMenu(false); });
 
 // Reveal on scroll
 const io=new IntersectionObserver((ents)=>{
