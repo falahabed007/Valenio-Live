@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pizzeria Valenio — Holzofen-Pizza & italienische Küche · Drensteinfurt</title>
-<meta name="description" content="Pizzeria Valenio in Drensteinfurt — italienische Küche & Holzofen-Pizza. Tisch online reservieren über OpenTable. Jetzt Speisekarte ansehen." />
+<title>Pizzeria Valenio — Pizza & italienische Küche · Drensteinfurt</title>
+<meta name="description" content="Pizzeria Valenio in Drensteinfurt — italienische Küche & Pizza. Tisch online reservieren über OpenTable. Jetzt Speisekarte ansehen." />
 
 <!-- Open Graph (schöne WhatsApp/Facebook-Vorschau) -->
 <meta property="og:type" content="restaurant" />
 <meta property="og:title" content="Pizzeria Valenio" />
-<meta property="og:description" content="Italienische Küche & Holzofen-Pizza in Drensteinfurt. Tisch online reservieren." />
+<meta property="og:description" content="Italienische Küche & Pizza in Drensteinfurt. Tisch online reservieren." />
 <meta property="og:image" content="assets/hero.jpg" />
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -24,9 +24,9 @@
 <script>
 const CONFIG = {
   name:    "Pizzeria Valenio",
-  claim:   "italienische küche & holzofen",   // PLATZHALTER — Claim/Untertitel frei anpassbar
+  claim:   "italienische küche & pizza",   // PLATZHALTER — Claim/Untertitel frei anpassbar
   heroEyebrow: "im herzen von drensteinfurt",  // kleine Zeile über dem Titel (true: Markt 5 = Marktplatz)
-  tagline: "Italienische Küche mit Herz – frische Zutaten, echtes Holzofen-Feuer und ein Platz, an dem man gern verweilt.",  // PLATZHALTER — frei anpassbar
+  tagline: "Italienische Küche mit Herz – frische Zutaten, handgemachte Pizza und ein Platz, an dem man gern verweilt.",  // PLATZHALTER — frei anpassbar
   gegruendet: "20XX",   // PLATZHALTER — Gründungsjahr nachreichen (wird nur als Fallback genutzt, s. heroEyebrow)
 
   telefon:      "02508 9994944",     // Anzeige
@@ -50,7 +50,7 @@ const CONFIG = {
   gutZuWissen: {
     oeffnungszeiten: "Wir haben für Sie von *Dienstag bis Sonntag* geöffnet — *Di–Sa* von *17:00–22:00 Uhr*, *Sonntags* von *11:30–14:30* und *17:00–22:00 Uhr*. *Montags* ist Ruhetag.",
     lieferservice:   "Reservieren Sie bequem online über *OpenTable* oder telefonisch unter *02508 9994944*. An *Wochenenden* empfehlen wir eine Reservierung. *Angaben zu Abholung & Lieferung folgen.*",   // teils PLATZHALTER
-    speisen:         "Aus unserer Küche kommen u.a. *Pizza aus dem Holzofen*, *Pasta*, *Salate*, *Antipasti* und *Dessert*. *Diese Auswahl bitte noch bestätigen.*"   // PLATZHALTER — bestätigen
+    speisen:         "Aus unserer Küche kommen u.a. *Pizza*, *Pasta*, *Salate*, *Antipasti* und *Dessert*. *Diese Auswahl bitte noch bestätigen.*"   // PLATZHALTER — bestätigen
   },
 
   // Impressum / Datenschutz  — PFLICHT in DE. Nichts erfunden: bitte vor Go-Live ergänzen.
@@ -145,9 +145,10 @@ header.scrolled{background:rgba(15,12,10,.86);backdrop-filter:blur(12px);
 .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:-8% 0 0 0;z-index:0;
   background:
-    radial-gradient(120% 90% at 75% 15%,rgba(201,162,39,.20),transparent 55%),
-    radial-gradient(90% 70% at 20% 90%,rgba(181,113,58,.22),transparent 60%),
-    linear-gradient(180deg,#1c1714 0%,#0f0c0a 100%);
+    linear-gradient(90deg,rgba(15,12,10,.72) 0%,rgba(15,12,10,.42) 50%,rgba(15,12,10,.08) 100%),
+    linear-gradient(180deg,rgba(15,12,10,.4) 0%,rgba(15,12,10,0) 28%,rgba(15,12,10,.72) 100%),
+    url("assets/hero.webp") center/cover no-repeat,
+    #0f0c0a;
   will-change:transform}
 .hero-bg::before{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='30%25'%3E%3Cstop offset='0%25' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='100%25' stop-color='%23000' stop-opacity='.7'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E")}
@@ -181,7 +182,7 @@ header.scrolled{background:rgba(15,12,10,.86);backdrop-filter:blur(12px);
 .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,6vw,80px);align-items:center}
 .story-figure{position:relative;aspect-ratio:4/5;border-radius:3px;overflow:hidden;
   background:linear-gradient(150deg,#241d18,#15110e);border:1px solid var(--line)}
-.story-figure .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--muted2)}
+.story-figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .story-figure .frame{position:absolute;inset:14px;border:1px solid rgba(227,205,134,.25)}
 .story h2{font-size:clamp(2.2rem,5vw,3.4rem);margin:14px 0 22px}
 .story p{color:#cabfae;margin:0 0 18px}
@@ -219,12 +220,11 @@ header.scrolled{background:rgba(15,12,10,.86);backdrop-filter:blur(12px);
 /* ---------- Galerie ---------- */
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
 .gal{position:relative;overflow:hidden;border-radius:3px;border:1px solid var(--line);
-  background:linear-gradient(140deg,#241d18,#14110e);cursor:pointer}
-.gal::after{content:"";position:absolute;inset:0;background:rgba(10,8,6,.25);transition:.4s}
+  background:linear-gradient(140deg,#241d18,#14110e)}
+.gal::after{content:"";position:absolute;inset:0;background:rgba(10,8,6,.1);transition:.4s}
 .gal:hover::after{background:rgba(10,8,6,0)}
-.gal .lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  color:var(--muted2);font-family:var(--serif);font-style:italic;font-size:1.1rem;z-index:2}
 .gal.big{grid-column:span 2;grid-row:span 2}
+.gal.tall{grid-row:span 2}
 .gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .gal:hover img{transform:scale(1.06)}
 
@@ -299,13 +299,17 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 
 /* ---------- Responsive ---------- */
 @media (max-width:920px){
-  .story-grid{grid-template-columns:1fr}.story-figure{aspect-ratio:16/10;order:-1}
+  .story-grid{grid-template-columns:1fr}.story-figure{order:-1;width:100%;max-width:520px;margin:0 auto}
   .gzw-grid{grid-template-columns:1fr}
   .info-grid{grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
   .gal.big{grid-column:span 2;grid-row:span 1}
 }
 @media (max-width:680px){
+  .hero-bg{background:
+    linear-gradient(180deg,rgba(15,12,10,.5) 0%,rgba(15,12,10,.58) 55%,rgba(15,12,10,.85) 100%),
+    url("assets/hero.webp") center/cover no-repeat,
+    #0f0c0a}
   .menu{position:fixed;inset:0 0 0 auto;width:78%;max-width:320px;background:#15110e;flex-direction:column;
     align-items:flex-start;justify-content:center;gap:26px;padding:40px;transform:translateX(100%);
     transition:.4s ease;border-left:1px solid var(--line)}
@@ -325,7 +329,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 <!-- ======================= HEADER ======================= -->
 <header id="header">
   <div class="container nav">
-    <a href="#top" class="brand" id="brand">Valenio<small id="brandClaim">genuss aus dem holzofen</small></a>
+    <a href="#top" class="brand" id="brand">Valenio<small id="brandClaim">italienische küche &amp; pizza</small></a>
     <nav>
       <ul class="menu" id="menu">
         <li><a href="#geschichte">Geschichte</a></li>
@@ -348,7 +352,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
   <div class="container hero-inner">
     <span class="eyebrow reveal" id="heroClaim">im herzen von drensteinfurt</span>
     <h1 class="reveal d1">Echte <em>italienische</em><br>Lebensfreude.</h1>
-    <p class="lead reveal d2" id="heroTagline">Italienische Küche, wie sie sein soll – mit Leidenschaft, bestem Mehl und echtem Holzofen-Feuer.</p>
+    <p class="lead reveal d2" id="heroTagline">Italienische Küche, wie sie sein soll – mit Leidenschaft, bestem Mehl und frischen Zutaten.</p>
     <div class="hero-cta reveal d3">
       <a class="btn btn-gold" href="#speisekarte">Speisekarte ansehen</a>
       <a class="btn btn-outline" id="heroReserve" href="#kontakt">Tisch reservieren</a>
@@ -361,13 +365,13 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 <section class="story section-pad" id="geschichte">
   <div class="container story-grid">
     <div class="story-figure reveal">
+      <img src="assets/story.webp" alt="Das Valenio-Team im Eingang des Restaurants" loading="lazy">
       <div class="frame"></div>
-      <div class="ph"><span class="serif" style="font-style:italic;font-size:1.4rem">Foto: Restaurant / Inhaber</span></div>
     </div>
     <div class="reveal d1">
       <span class="eyebrow">Unsere Geschichte</span>
-      <h2>Ein Holzofen,<br>echte Zutaten,<br>eine Leidenschaft.</h2>
-      <p>Bei uns entsteht jede Pizza von Hand – langer Teig, beste Tomaten aus Kampanien und das Feuer unseres Holzofens. Ein Ort, an dem Gäste zu Freunden werden.</p>
+      <h2>Frischer Teig,<br>echte Zutaten,<br>eine Leidenschaft.</h2>
+      <p>Bei uns entsteht jede Pizza von Hand – mit langem Teig und besten Tomaten aus Kampanien. Ein Ort, an dem Gäste zu Freunden werden.</p>
       <p>Wir kochen so, wie man es in Italien tut: ehrlich, großzügig und mit Liebe zum Detail. Dafür stehen wir mit unserem Namen.</p>
       <div class="sig">— Pizzeria Valenio</div>
     </div>
@@ -423,12 +427,13 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
       <div class="rule"></div>
     </div>
     <div class="gallery reveal" id="gallery">
-      <div class="gal big"><div class="lbl">Holzofen-Pizza</div></div>
-      <div class="gal"><div class="lbl">Antipasti</div></div>
-      <div class="gal"><div class="lbl">Pasta</div></div>
-      <div class="gal"><div class="lbl">Dessert</div></div>
-      <div class="gal"><div class="lbl">Ambiente</div></div>
-      <div class="gal"><div class="lbl">Wein</div></div>
+      <div class="gal big"><img src="assets/galerie-1.webp" alt="Salat mit Garnelen auf einem gedeckten Tisch" loading="lazy"></div>
+      <div class="gal tall"><img src="assets/galerie-2.webp" alt="Pizza mit Rucola und Spaghetti mit Tomaten von oben" loading="lazy"></div>
+      <div class="gal tall"><img src="assets/galerie-3.webp" alt="Gedeckter Tisch mit Blumen am Fenster" loading="lazy"></div>
+      <div class="gal"><img src="assets/galerie-4.webp" alt="Gäste am Tisch mit Pizza, Pasta und Salat" loading="lazy"></div>
+      <div class="gal"><img src="assets/galerie-5.webp" alt="Kamin an der Natursteinwand im Gastraum" loading="lazy"></div>
+      <div class="gal"><img src="assets/galerie-6.webp" alt="Gastraum mit beleuchteter Bar und Blumenbild" loading="lazy"></div>
+      <div class="gal"><img src="assets/galerie-7.webp" alt="Gastraum mit Lüstern und großen Fenstern" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -464,7 +469,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 <footer>
   <div class="container">
     <div class="foot-grid">
-      <div class="foot-brand">Valenio<small>genuss aus dem holzofen</small></div>
+      <div class="foot-brand">Valenio<small>italienische küche &amp; pizza</small></div>
       <div class="foot-links">
         <a href="#speisekarte">Speisekarte</a>
         <a href="#gutzuwissen">Gut zu wissen</a>
@@ -520,7 +525,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
   $('#brandClaim').textContent = CONFIG.claim;
   document.querySelector('.foot-brand').firstChild.textContent = firstWord;
   document.querySelector('.foot-brand small').textContent = CONFIG.claim;
-  document.title = CONFIG.name + ' — Holzofen-Pizza & italienische Küche';
+  document.title = CONFIG.name + ' — Pizza & italienische Küche';
   $('#footName').textContent = CONFIG.name;
   $('#year').textContent = new Date().getFullYear();
 

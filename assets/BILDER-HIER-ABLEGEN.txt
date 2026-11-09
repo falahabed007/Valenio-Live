@@ -6,7 +6,7 @@ echten "10.000-€-Look" sind PROFESSIONELLE FOTOS aber der größte Hebel.
 
 Lege hier folgende Dateien ab und die Seite nutzt sie automatisch:
 
-  hero.jpg        – großes Stimmungsbild (Holzofen / Pizza / Ambiente),
+  hero.jpg        – großes Stimmungsbild (Pizza / Ambiente),
                     quer, mind. 1920×1080. Wird auch für die
                     WhatsApp/Facebook-Vorschau (og:image) verwendet.
   favicon.svg     – bereits vorhanden (kleines Logo im Browser-Tab).
