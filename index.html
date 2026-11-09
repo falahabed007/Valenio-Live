@@ -209,11 +209,10 @@ header.scrolled{background:rgba(15,12,10,.86);backdrop-filter:blur(12px);
 
 /* ---------- Speisekarte ---------- */
 .menu-sec{background:var(--bg2)}
-.menu-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.menu-links{display:flex;justify-content:center}
 .menu-links .btn{justify-content:center;min-width:320px;padding:20px 36px;font-size:1.05rem;
   letter-spacing:.08em;text-transform:uppercase}
-.menu-links .btn.is-leer{opacity:.45;pointer-events:none}
-.menu-folgt{text-align:center;color:var(--muted);font-size:.95rem;margin:22px 0 0}
+.menu-links .btn.is-leer{pointer-events:none}
 .menu-note{text-align:center;color:var(--muted2);font-size:.85rem;margin-top:34px}
 
 /* ---------- Galerie ---------- */
@@ -402,10 +401,8 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
       <div class="rule"></div>
     </div>
     <div class="menu-links reveal">
-      <a class="btn btn-gold is-leer" id="link-restaurant" aria-disabled="true">Speisekarte Restaurant</a>
-      <a class="btn btn-gold is-leer" id="link-togo" aria-disabled="true">Speisekarte To Go</a>
+      <a class="btn btn-gold is-leer" id="menuLink" aria-disabled="true">Speisekarte folgt in Kürze</a>
     </div>
-    <p class="menu-folgt" id="menuFolgt" hidden></p>
     <p class="menu-note">Allergene &amp; Zusatzstoffe gemäß LMIV sind in der Speisekarte gekennzeichnet.</p>
   </div>
 </section>
@@ -580,24 +577,16 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 
 /* ====================== Speisekarte aus API laden ====================== */
 async function ladeSpeisekarte(){
-  let meta={slots:{restaurant:null,togo:null}};
+  let meta={};
   try{ meta=await (await fetch('/api/speisekarte/meta',{cache:'no-store'})).json(); }catch(e){}
-  let fehlend=0;
-  ['restaurant','togo'].forEach(slot=>{
-    const link=document.getElementById('link-'+slot);
-    if(meta.slots&&meta.slots[slot]){
-      link.href='/api/speisekarte/'+slot+'.pdf';
-      link.target='_blank';
-      link.rel='noopener';
-      link.classList.remove('is-leer');
-      link.removeAttribute('aria-disabled');
-    }else{
-      fehlend++;
-    }
-  });
-  const folgt=document.getElementById('menuFolgt');
-  folgt.textContent=fehlend===2?'Die Karten folgen in Kürze.':'Eine Karte folgt in Kürze.';
-  folgt.hidden=fehlend===0;
+  if(!meta.slots||!meta.slots.restaurant) return;
+  const link=document.getElementById('menuLink');
+  link.href='/api/speisekarte/restaurant.pdf';
+  link.target='_blank';
+  link.rel='noopener';
+  link.textContent='Speisekarte';
+  link.classList.remove('is-leer');
+  link.removeAttribute('aria-disabled');
 }
 ladeSpeisekarte();
 

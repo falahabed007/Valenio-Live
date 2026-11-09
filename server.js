@@ -27,7 +27,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
 const TOKEN_SECRET = process.env.ADMIN_TOKEN_SECRET || 'unsicheres-standardgeheimnis-bitte-aendern';
 const MONGODB_URI = process.env.MONGODB_URI || '';
 
-const SLOTS = ['togo', 'restaurant'];           // erlaubte Speisekarten-Slots
+const SLOTS = ['restaurant'];                   // eine Speisekarte, ein Button auf der Seite
 const MAX_PDF_BYTES = 10 * 1024 * 1024;          // 10 MB
 
 const app = express();
@@ -332,8 +332,7 @@ function adminPage() {
 
 <script>
 const SLOTS = [
-  { key:'restaurant', titel:'Speisekarte Restaurant', hint:'Karte fuer den Verzehr vor Ort' },
-  { key:'togo',       titel:'Speisekarte TO GO',      hint:'Karte fuer Abholung' }
+  { key:'restaurant', titel:'Speisekarte', hint:'Dieses PDF oeffnet der Button auf der Webseite' }
 ];
 const tokenKey = 'pizzeria_admin_token';
 
