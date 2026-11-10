@@ -4,12 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Pizzeria Valenio — Italienisches Restaurant · Drensteinfurt</title>
-<meta name="description" content="Pizzeria Valenio in Drensteinfurt — italienisches Restaurant mit Pizza und Pasta. Tisch online reservieren über OpenTable. Jetzt Speisekarte ansehen." />
+<meta name="description" content="Ein Stück Italien im Herzen von Drensteinfurt: familiengeführtes italienisches Restaurant mit frischen Zutaten und traditionellen Rezepten. Tisch online reservieren." />
 
 <!-- Open Graph (schöne WhatsApp/Facebook-Vorschau) -->
 <meta property="og:type" content="restaurant" />
 <meta property="og:title" content="Pizzeria Valenio" />
-<meta property="og:description" content="Italienisches Restaurant in Drensteinfurt. Tisch online reservieren." />
+<meta property="og:description" content="Ein Stück Italien im Herzen von Drensteinfurt. Tisch online reservieren." />
 <meta property="og:image" content="assets/hero.jpg" />
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -25,17 +25,25 @@
 const CONFIG = {
   name:    "Pizzeria Valenio",
   claim:   "italienisches restaurant",   // PLATZHALTER — Claim/Untertitel frei anpassbar
-  heroEyebrow: "im herzen von drensteinfurt",  // kleine Zeile über dem Titel (true: Markt 5 = Marktplatz)
-  tagline: "Italienisches Restaurant mit Herz – frische Zutaten, gute Küche und ein Platz, an dem man gern verweilt.",  // PLATZHALTER — frei anpassbar
+  heroEyebrow: "restaurant · pizzeria",  // kleine Zeile über dem Titel (wie im Logo)
+  tagline: "Frische Zutaten. Traditionelle Rezepte. Familiäre Gastfreundschaft.",  // Text vom Restaurant (Mail 10.11.2026)
   gegruendet: "20XX",   // PLATZHALTER — Gründungsjahr nachreichen (wird nur als Fallback genutzt, s. heroEyebrow)
 
   telefon:      "02508 9994944",     // Anzeige
   telefonLink:  "+4925089994944",    // ohne Leerzeichen (tel:)
   whatsapp:     "",                  // ohne + (wa.me) — leer = WhatsApp-Button aus
-  email:        "info@pizzeria-valenio.de",   // PLATZHALTER — echte Adresse nachreichen
+  email:        "info@valenio-restaurant.de",
   strasse:      "Markt 5",
   plzOrt:       "48317 Drensteinfurt",
   mapsQuery:    "Pizzeria Valenio, Markt 5, 48317 Drensteinfurt",
+
+  // Video unter dem Inhaber-Foto: Vorschaubild mit Play-Knopf, Klick öffnet den Player.
+  // src leer = Video-Block ausgeblendet.
+  video: {
+    src:    "assets/valenio-video.mp4",  // vorerst ohne Ton, Musik liefert das Restaurant nach
+    poster: "assets/video-poster.webp",  // Standbild aus dem Video
+    titel:  "Valenio im Video"
+  },
 
   // Tisch-Reservierung (OpenTable o.ä.) — leer lassen = Reservierungs-Buttons aus
   reservierung: "https://www.opentable.de/",   // PLATZHALTER — exakten OpenTable-Link von Valenio einsetzen
@@ -53,15 +61,15 @@ const CONFIG = {
     speisen:         "Aus unserer Küche kommen u.a. *Pizza*, *Pasta*, *Salate*, *Antipasti* und *Dessert*."
   },
 
-  // Impressum / Datenschutz  — PFLICHT in DE. Nichts erfunden: bitte vor Go-Live ergänzen.
+  // Impressum / Datenschutz  — PFLICHT in DE. Daten laut Mail "Valenio SteuerID ect." vom 05.07.2026.
   impressum: {
-    inhaber:      "BITTE ERGÄNZEN — Inhaber/Betreiber",   // PFLICHT
-    firma:        "Pizzeria Valenio",
+    inhaber:      "Anna Piterskij (Geschäftsführerin)",
+    firma:        "Valenio UG",
     anschrift:    "Markt 5, 48317 Drensteinfurt",
     telefon:      "02508 9994944",
-    email:        "info@pizzeria-valenio.de",             // PLATZHALTER
-    ustId:        "",                                     // USt-IdNr. (falls vorhanden) — sonst Steuernummer
-    steuernummer: ""                                      // Steuernummer
+    email:        "info@valenio-restaurant.de",
+    ustId:        "",                                     // USt-IdNr. liegt noch nicht vor
+    steuernummer: "304/5972/1504"
   }
 };
 
@@ -155,7 +163,7 @@ header.scrolled{background:rgba(15,12,10,.86);backdrop-filter:blur(12px);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='30%25'%3E%3Cstop offset='0%25' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='100%25' stop-color='%23000' stop-opacity='.7'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E")}
 .hero-inner{position:relative;z-index:2;max-width:880px}
 .hero .eyebrow{margin-bottom:26px}
-.hero h1{font-size:clamp(3.2rem,9vw,7rem);letter-spacing:.01em}
+.hero h1{font-size:clamp(2.7rem,7.2vw,5.9rem);letter-spacing:.01em}
 .hero h1 em{font-style:italic;color:var(--gold-soft);font-weight:500}
 .hero p.lead{max-width:560px;font-size:1.12rem;color:#d8cdbb;margin:26px 0 38px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
@@ -178,13 +186,62 @@ header.scrolled{background:rgba(15,12,10,.86);backdrop-filter:blur(12px);
   background:var(--gold);transform:translateY(-50%)}
 .rule::before{left:-12px}.rule::after{right:-12px}
 
+/* ---------- Willkommen (Text unter dem Hero) ---------- */
+.intro{text-align:center}
+.intro-inner{max-width:760px;margin:0 auto}
+.intro .rule{margin:20px auto 34px}
+.intro-lead{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.6vw,1.75rem);
+  line-height:1.5;color:var(--text);margin:0 0 22px}
+.intro p{color:#cabfae;margin:0;font-size:1.05rem}
+.intro p.intro-lead{margin:0 0 24px}
+
 /* ---------- Story ---------- */
 .story{background:var(--bg2)}
 .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,6vw,80px);align-items:center}
+.story-grid + .story-grid{margin-top:clamp(70px,10vw,130px)}
+.story-grid.rev{grid-template-columns:.95fr 1.05fr}
 .story-figure{position:relative;aspect-ratio:4/5;border-radius:3px;overflow:hidden;
   background:linear-gradient(150deg,#241d18,#15110e);border:1px solid var(--line)}
 .story-figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .story-figure .frame{position:absolute;inset:14px;border:1px solid rgba(227,205,134,.25)}
+.story-media{display:flex;flex-direction:column;gap:22px}
+
+/* Video-Vorschau unter dem Inhaber-Foto (Play-Knopf mittig) */
+.video-card{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;margin:0;font:inherit;
+  border:1px solid var(--line);border-radius:3px;overflow:hidden;cursor:pointer;
+  background:linear-gradient(150deg,#241d18,#15110e)}
+.video-card[hidden]{display:none}
+.video-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.video-card::before{content:"";position:absolute;inset:0;z-index:1;transition:.4s;
+  background:radial-gradient(circle at 50% 50%,rgba(15,12,10,.12),rgba(15,12,10,.62))}
+.video-card .frame{position:absolute;inset:12px;border:1px solid rgba(227,205,134,.25);z-index:2}
+.video-card .play{position:absolute;left:50%;top:50%;z-index:3;width:76px;height:76px;margin:-38px 0 0 -38px;
+  border-radius:50%;background:rgba(15,12,10,.45);border:1px solid var(--gold-soft);
+  display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:.35s ease}
+.video-card .play svg{width:26px;height:26px;fill:var(--gold-soft);margin-left:4px;transition:.35s ease}
+.video-card .play::after{content:"";position:absolute;inset:-9px;border-radius:50%;
+  border:1px solid rgba(227,205,134,.35);animation:ring 2.6s ease-out infinite}
+@keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.28);opacity:0}}
+.video-card .video-label{position:absolute;left:0;right:0;bottom:24px;z-index:3;text-align:center;
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text);
+  text-shadow:0 1px 8px rgba(0,0,0,.85),0 0 2px rgba(0,0,0,.6)}
+.video-card:hover img{transform:scale(1.05)}
+.video-card:hover .play{background:var(--gold);border-color:var(--gold)}
+.video-card:hover .play svg{fill:#1a1408}
+.video-card:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}
+
+/* Video-Player (Vollbild-Overlay) */
+.video-overlay{position:fixed;inset:0;z-index:1100;background:rgba(8,6,5,.94);display:none;
+  align-items:center;justify-content:center;padding:60px 16px 24px}
+.video-overlay.open{display:flex}
+/* feste 16:9-Groesse, damit der Player beim Laden nicht springt */
+.video-overlay video{width:min(1100px,100%,calc((100vh - 84px)*1.778));height:auto;aspect-ratio:16/9;
+  object-fit:contain;border-radius:4px;background:#000;box-shadow:0 30px 80px -20px rgba(0,0,0,.8)}
+.video-overlay .close{position:absolute;top:12px;right:18px;background:none;border:none;color:var(--text);
+  font-size:2.4rem;cursor:pointer;line-height:1;padding:4px 8px}
+.video-overlay .close:hover{color:var(--gold-soft)}
+.video-overlay .close:focus{outline:none}
+.video-overlay .close:focus-visible{outline:1px solid var(--gold-soft);border-radius:4px}
 .story h2{font-size:clamp(2.2rem,5vw,3.4rem);margin:14px 0 22px}
 .story p{color:#cabfae;margin:0 0 18px}
 .sig{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--gold-soft);margin-top:8px}
@@ -224,6 +281,7 @@ header.scrolled{background:rgba(15,12,10,.86);backdrop-filter:blur(12px);
 .gal:hover::after{background:rgba(10,8,6,0)}
 .gal.big{grid-column:span 2;grid-row:span 2}
 .gal.tall{grid-row:span 2}
+.gal.wide{grid-column:span 2}
 .gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .gal:hover img{transform:scale(1.06)}
 
@@ -251,6 +309,9 @@ header.scrolled{background:rgba(15,12,10,.86);backdrop-filter:blur(12px);
 
 /* ---------- Kontakt ---------- */
 .contact{text-align:center}
+.contact-text{max-width:620px;margin:0 auto 26px;color:#cabfae}
+.contact-text p{margin:0 0 12px}
+.contact-text .gold{font-family:var(--serif);font-size:1.4rem;font-style:italic}
 .contact .big-phone{font-family:var(--serif);font-size:clamp(2.4rem,6vw,4rem);color:var(--gold-soft);
   display:inline-block;margin:8px 0 6px}
 .contact .addr{color:var(--muted);font-size:1.05rem}
@@ -294,7 +355,10 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 
 /* ---------- Responsive ---------- */
 @media (max-width:920px){
-  .story-grid{grid-template-columns:1fr}.story-figure{order:-1;width:100%;max-width:520px;margin:0 auto}
+  .story-grid,.story-grid.rev{grid-template-columns:1fr}.story-figure{order:-1;width:100%;max-width:520px;margin:0 auto}
+  .story-media{order:-1;width:100%;max-width:520px;margin:0 auto}
+  .video-card .play{width:64px;height:64px;margin:-32px 0 0 -32px}
+  .video-card .video-label{bottom:16px;font-size:.62rem}
   .gzw-grid{grid-template-columns:1fr}
   .gzw-fotos{grid-template-columns:repeat(2,1fr);gap:14px}
   .gzw-foto:first-child{grid-column:span 2;aspect-ratio:16/10}
@@ -338,7 +402,7 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
     <a href="#top" class="brand" id="brand">Valenio<small id="brandClaim">italienisches restaurant</small></a>
     <nav>
       <ul class="menu" id="menu">
-        <li><a href="#geschichte">Geschichte</a></li>
+        <li><a href="#ueber-uns">Über uns</a></li>
         <li><a href="#gutzuwissen">Gut zu wissen</a></li>
         <li><a href="#galerie">Galerie</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
@@ -355,30 +419,61 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 <section class="hero" id="top">
   <div class="hero-bg" id="heroBg"></div>
   <div class="container hero-inner">
-    <span class="eyebrow reveal" id="heroClaim">im herzen von drensteinfurt</span>
-    <h1 class="reveal d1">Echte <em>italienische</em><br>Lebensfreude.</h1>
-    <p class="lead reveal d2" id="heroTagline">Italienische Küche, wie sie sein soll – mit Leidenschaft, bestem Mehl und frischen Zutaten.</p>
+    <span class="eyebrow reveal" id="heroClaim">restaurant · pizzeria</span>
+    <h1 class="reveal d1">Ein Stück <em>Italien</em><br>im Herzen von Drensteinfurt</h1>
+    <p class="lead reveal d2" id="heroTagline">Frische Zutaten. Traditionelle Rezepte. Familiäre Gastfreundschaft.</p>
     <div class="hero-cta reveal d3">
-      <a class="btn btn-gold" href="#speisekarte">Speisekarte ansehen</a>
+      <a class="btn btn-gold" href="#speisekarte">Unsere Speisekarte entdecken</a>
       <a class="btn btn-outline" id="heroReserve" href="#kontakt">Tisch reservieren</a>
     </div>
   </div>
   <div class="scroll-hint">Scrollen</div>
 </section>
 
-<!-- ======================= GESCHICHTE ======================= -->
-<section class="story section-pad" id="geschichte">
+<!-- ======================= WILLKOMMEN ======================= -->
+<section class="intro section-pad" id="willkommen">
+  <div class="container intro-inner reveal">
+    <span class="eyebrow">Benvenuti</span>
+    <div class="rule"></div>
+    <p class="intro-lead">Willkommen in unserem familiengeführten Restaurant mitten im Zentrum von Drensteinfurt. Wir kochen nach italienischen Originalrezepten und legen großen Wert auf frische, sorgfältig ausgewählte Zutaten. Dabei liegt uns eines besonders am Herzen: dass Sie gut essen und sich bei uns wohlfühlen.</p>
+    <p>Ob ein Abend zu zweit, ein Essen mit der Familie oder eine gesellige Runde mit Freunden – wir freuen uns, Sie bei uns zu begrüßen.</p>
+  </div>
+</section>
+
+<!-- ======================= ÜBER UNS (Familie + Küche) ======================= -->
+<section class="story section-pad" id="ueber-uns">
   <div class="container story-grid">
-    <div class="story-figure reveal">
-      <img src="assets/story.webp" alt="Das Valenio-Team im Eingang des Restaurants" loading="lazy">
-      <div class="frame"></div>
+    <div class="story-media">
+      <div class="story-figure reveal">
+        <img src="assets/story.webp" alt="Das Valenio-Team im Eingang des Restaurants" loading="lazy">
+        <div class="frame"></div>
+      </div>
+      <!-- Video-Vorschau: wird aus CONFIG.video befüllt, sonst ausgeblendet -->
+      <button class="video-card reveal" id="videoCard" type="button" aria-label="Video ansehen" hidden>
+        <img id="videoPoster" src="" alt="" loading="lazy">
+        <span class="frame"></span>
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+        <span class="video-label">Video ansehen</span>
+      </button>
     </div>
     <div class="reveal d1">
-      <span class="eyebrow">Unsere Geschichte</span>
-      <h2>Gute Küche,<br>echte Zutaten,<br>eine Leidenschaft.</h2>
-      <p>Bei uns kommen Pizza, Pasta und Salate frisch aus der Küche an Ihren Tisch. Ein Ort, an dem Gäste zu Freunden werden.</p>
-      <p>Wir kochen so, wie man es in Italien tut: ehrlich, großzügig und mit Liebe zum Detail. Dafür stehen wir mit unserem Namen.</p>
+      <span class="eyebrow">Über uns</span>
+      <h2>Unsere Familie<br>heißt Sie willkommen</h2>
+      <p>Für uns gehört zu einem guten Essen mehr als das, was auf dem Teller liegt. Es sind auch der herzliche Empfang, die Zeit miteinander und die Freude daran, Gäste zu bewirten.</p>
+      <p>Als Familienunternehmen kümmern wir uns persönlich um unsere Gäste. Wir möchten einen Ort schaffen, an dem Sie gerne zusammenkommen, in Ruhe genießen und sich auf Ihren nächsten Besuch freuen.</p>
       <div class="sig">— Pizzeria Valenio</div>
+    </div>
+  </div>
+  <div class="container story-grid rev">
+    <div class="reveal">
+      <span class="eyebrow">Unsere Küche</span>
+      <h2>Italienische Küche<br>mit Tradition</h2>
+      <p>Unsere Küche beginnt mit guten Zutaten und Rezepten, die wir schätzen. Wir bereiten unsere Gerichte mit Sorgfalt zu und bewahren dabei das, was die traditionelle italienische Küche ausmacht: klare Aromen, frische Zutaten und die Freude am gemeinsamen Essen.</p>
+      <p>So bringen wir ein Stück italienische Esskultur nach Drensteinfurt – ehrlich, geschmackvoll und mit Liebe zu unserem Handwerk.</p>
+    </div>
+    <div class="story-figure reveal d1">
+      <img src="assets/galerie-2.webp" alt="Pizza mit Rucola und Spaghetti mit Tomaten von oben" loading="lazy" style="object-position:50% 50%">
+      <div class="frame"></div>
     </div>
   </div>
 </section>
@@ -425,9 +520,8 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
     </div>
     <div class="gallery reveal" id="gallery">
       <div class="gal big"><img src="assets/galerie-1.webp" alt="Salat mit Garnelen auf einem gedeckten Tisch" loading="lazy"></div>
-      <div class="gal tall"><img src="assets/galerie-2.webp" alt="Pizza mit Rucola und Spaghetti mit Tomaten von oben" loading="lazy"></div>
-      <div class="gal"><img src="assets/galerie-5.webp" alt="Kamin an der Natursteinwand im Gastraum" loading="lazy"></div>
-      <div class="gal"><img src="assets/galerie-6.webp" alt="Gastraum mit beleuchteter Bar und Blumenbild" loading="lazy"></div>
+      <div class="gal wide"><img src="assets/galerie-5.webp" alt="Kamin an der Natursteinwand im Gastraum" loading="lazy"></div>
+      <div class="gal wide"><img src="assets/galerie-6.webp" alt="Gastraum mit beleuchteter Bar und Blumenbild" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -437,10 +531,14 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 <!-- ======================= KONTAKT ======================= -->
 <section class="contact section-pad" id="kontakt">
   <div class="container">
-    <div class="head reveal" style="margin-bottom:30px">
-      <span class="eyebrow">Wir freuen uns auf Sie</span>
-      <h2>Reservieren &amp; Kontakt</h2>
+    <div class="head reveal" style="margin-bottom:30px;max-width:820px">
+      <span class="eyebrow">Reservieren &amp; Kontakt</span>
+      <h2>Zeit für einen schönen Abend</h2>
       <div class="rule"></div>
+    </div>
+    <div class="contact-text reveal">
+      <p>Nehmen Sie Platz, lassen Sie den Alltag für eine Weile hinter sich und genießen Sie italienische Küche in familiärer Atmosphäre.</p>
+      <p class="gold">Reservieren Sie Ihren Tisch. Wir freuen uns auf Sie!</p>
     </div>
     <div class="reveal d1">
       <a class="big-phone" id="bigPhone" href="#">+49 1234 567890</a>
@@ -481,6 +579,12 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
 
 <!-- Mobile sticky call -->
 <div class="mobile-call" id="mobileCall"></div>
+
+<!-- Video-Player -->
+<div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Video">
+  <button class="close" id="videoClose" type="button" aria-label="Video schließen">&times;</button>
+  <video id="videoPlayer" controls playsinline preload="none"></video>
+</div>
 
 <!-- Modals -->
 <div class="overlay" id="overlay">
@@ -581,6 +685,40 @@ footer{background:#0e0b09;border-top:1px solid var(--line-soft);padding:56px 0 3
     +'<h4>Speisekarte (PDF)</h4><p>Die angezeigten Speisekarten-PDFs werden von unserem eigenen Server ausgeliefert; dabei werden keine zusätzlichen personenbezogenen Daten erhoben.</p>'
     +'<h4>Google Maps</h4><p>Die Standortkarte wird erst nach einem Klick geladen. Dabei werden Daten an Google übertragen.</p>'
     +'<h4>Ihre Rechte</h4><p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch sowie ein Beschwerderecht bei einer Aufsichtsbehörde.</p>';
+})();
+
+/* ====================== Video unter dem Inhaber-Foto ====================== */
+(function(){
+  const v = CONFIG.video || {};
+  const card = document.getElementById('videoCard');
+  if(!v.src || !card) return;
+  const ov = document.getElementById('videoOverlay');
+  const player = document.getElementById('videoPlayer');
+  const closeBtn = document.getElementById('videoClose');
+  const poster = document.getElementById('videoPoster');
+  if(v.poster){ poster.src = v.poster; player.poster = v.poster; }
+  poster.alt = v.titel || 'Video';
+  card.setAttribute('aria-label', (v.titel || 'Video') + ' abspielen');
+  card.hidden = false;
+
+  function oeffnen(){
+    if(!player.getAttribute('src')) player.src = v.src;
+    ov.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    player.currentTime = 0;
+    const p = player.play(); if(p && p.catch) p.catch(()=>{});
+    closeBtn.focus();
+  }
+  function schliessen(){
+    player.pause();
+    ov.classList.remove('open');
+    document.body.style.overflow = '';
+    card.focus();
+  }
+  card.addEventListener('click', oeffnen);
+  closeBtn.addEventListener('click', schliessen);
+  ov.addEventListener('click', e => { if(e.target === ov) schliessen(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && ov.classList.contains('open')) schliessen(); });
 })();
 
 /* ====================== Speisekarte aus API laden ====================== */
